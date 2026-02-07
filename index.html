@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Lifinity Labs — ATS Resume Optimization for Universities & Workforce Programs</title>
+  <meta name="description" content="Technology-enabled, human-reviewed ATS resume optimization for universities, career services, bootcamps, and workforce programs. Pilot-first, secure intake, defined turnaround SLAs. Delivered by Lifinity Technologies LLC." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://lifinitylabs.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lifinity Labs — ATS Resume Optimization for Universities & Workforce Programs" />
+  <meta property="og:description" content="Technology-enabled, human-reviewed ATS resume optimization at institutional scale. Pilot-first. Secure intake. Defined turnaround SLAs. Delivered by Lifinity Technologies LLC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lifinitylabs.com/" />
+
+  <!-- Basic structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Lifinity Labs",
+    "legalName":"Lifinity Technologies LLC",
+    "url":"https://lifinitylabs.com",
+    "email":"support@lifinitylabs.com",
+    "sameAs":[]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+
+      --blue:#2563eb;
+      --blue2:#1d4ed8;
+
+      --ok:#065f46;
+      --chip:#eef2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:0 auto;padding:26px 18px}
+
+    /* Top bar */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:10px 0 6px;
+    }
+    .brandRow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .brand{
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .tag{
+      font-size:12px;
+      background:var(--chip);
+      padding:4px 10px;
+      border-radius:999px;
+      color:#1f2a44;
+      border:1px solid #dbe3ff;
+      white-space:nowrap;
+    }
+    .legalLine{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    /* Buttons */
+    .btnRow{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      border-radius:12px;
+      padding:12px 14px;
+      font-weight:900;
+      border:1px solid var(--blue);
+      white-space:nowrap;
+    }
+    .btnPrimary{background:var(--blue);color:#fff}
+    .btnPrimary:hover{background:var(--blue2)}
+    .btnGhost{background:#fff;color:var(--blue)}
+    .btnGhost:hover{background:#f5f8ff}
+
+    /* Hero */
+    .hero{
+      padding:28px 0 18px;
+      border-bottom:1px solid var(--line);
+    }
+    h1{
+      font-size:44px;
+      line-height:1.06;
+      margin:0 0 12px;
+      letter-spacing:-.4px;
+    }
+    .sub{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:880px;
+      margin:0 0 16px;
+    }
+    .pillRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .pill{
+      font-size:12px;
+      border:1px solid var(--line);
+      background:var(--soft);
+      padding:6px 10px;
+      border-radius:999px;
+      color:#111827;
+    }
+
+    /* Sections */
+    .section{padding:24px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:26px;margin:0 0 10px}
+    p{margin:10px 0;color:var(--muted);line-height:1.65}
+    ul,ol{margin:10px 0 0 18px;color:var(--muted);line-height:1.75}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    .card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      padding:16px;
+    }
+    .cardTitle{font-weight:900;margin:0 0 6px}
+    .mini{font-size:13px;color:var(--muted);line-height:1.55}
+
+    .note{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      border:1px solid var(--line);
+      background:var(--soft);
+      border-radius:16px;
+      padding:14px;
+    }
+    .noteIcon{
+      font-weight:900;
+      color:var(--ok);
+      margin-top:1px;
+    }
+
+    details{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 14px;
+      background:#fff;
+    }
+    summary{cursor:pointer;font-weight:900}
+    details p{margin:10px 0 0}
+
+    .ctaBand{
+      padding:22px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .ctaCard{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      padding:16px;
+    }
+    .ctaTitle{font-size:22px;font-weight:900;margin:0 0 8px}
+    .ctaSub{margin:0;color:var(--muted);line-height:1.6}
+    .ctaActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .smallLink{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .smallLink a{color:var(--blue);text-decoration:none;font-weight:900}
+
+    .footer{padding:18px 0}
+    .footText{font-size:12px;color:var(--muted);line-height:1.6}
+    .footText a{color:var(--blue);text-decoration:none;font-weight:900}
+
+    /* Sticky top CTA (light, non-annoying) */
+    .sticky{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .stickyInner{
+      max-width:1040px;
+      margin:0 auto;
+      padding:10px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .stickyLeft{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .stickyTitle{font-weight:900}
+    .stickyNav{display:none;gap:14px;color:var(--muted);font-size:13px}
+    .stickyNav a{color:inherit;text-decoration:none}
+    @media(min-width:900px){.stickyNav{display:flex}}
+    .stickyBtn{min-width:auto;padding:10px 12px;border-radius:12px;font-size:13px}
+  </style>
+</head>
+
+<body>
+
+  <div class="sticky">
+    <div class="stickyInner">
+      <div class="stickyLeft">
+        <div class="stickyTitle">Lifinity Labs</div>
+        <span class="tag">Institutional pilots</span>
+        <div class="stickyNav">
+          <a href="#who">Who it’s for</a>
+          <a href="#how">How it works</a>
+          <a href="#privacy">Data handling</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <a class="btn btnPrimary stickyBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSfr9Ue1WO85x1WRton1erOyP4raQMPpHSuUKj8jlEfibeSmbQ/viewform?usp=dialog" target="_blank" rel="noopener">Request a Pilot</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="top">
+      <div>
+        <div class="brandRow">
+          <div class="brand">Lifinity Labs</div>
+          <span class="tag">Delivered by Lifinity Technologies LLC</span>
+        </div>
+        <div class="legalLine">
+          Workforce & career optimization services • Technology-enabled, human-reviewed
+        </div>
+      </div>
+
+      <div class="btnRow">
+        <a class="btn btnPrimary" href="https://docs.google.com/forms/d/e/1FAIpQLSfr9Ue1WO85x1WRton1erOyP4raQMPpHSuUKj8jlEfibeSmbQ/viewform?usp=dialog" target="_blank" rel="noopener">Request a Pilot</a>
+        <a class="btn btnGhost" href="mailto:support@lifinitylabs.com?subject=Request%20a%20Proposal%20%E2%80%94%20Lifinity%20Labs">Request a Proposal</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <h1>ATS Resume Optimization for Universities & Workforce Programs</h1>
+      <p class="sub">
+        Help students and job seekers get properly evaluated by Applicant Tracking Systems (ATS) and recruiters — without increasing staff workload.
+        Lifinity Labs provides a technology-enabled, human-reviewed resume optimization service with secure intake and defined turnaround SLAs.
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">Service-based (no software deployment)</span>
+        <span class="pill">Secure intake & controlled access</span>
+        <span class="pill">Defined turnaround SLAs</span>
+        <span class="pill">FERPA-aware workflows available</span>
+      </div>
+    </section>
+
+    <section class="section" id="who">
+      <h2>Who this is for</h2>
+      <p>
+        We partner with organizations that support job seekers at scale, including:
+      </p>
+      <div class="grid">
+        <div class="card">
+          <div class="cardTitle">Higher education</div>
+          <ul>
+            <li>University and college career services</li>
+            <li>Professional programs and alumni offices</li>
+            <li>International student career readiness</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Workforce & training programs</div>
+          <ul>
+            <li>Bootcamps and training providers</li>
+            <li>Workforce development and reskilling initiatives</li>
+            <li>Employment readiness and placement programs</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mini">
+        The institutional offering includes our ATS Resume Fix program as a service module within Lifinity Labs.
+      </p>
+    </section>
+
+    <section class="section" id="problem">
+      <h2>The problem</h2>
+      <p>
+        Many applicants are filtered before a human reads their resume. ATS systems can reject qualified candidates due to
+        formatting that doesn’t parse correctly, missing or misaligned keywords, and unclear role positioning.
+      </p>
+      <div class="note">
+        <div class="noteIcon">✓</div>
+        <div>
+          <p style="margin-top:0">
+            Career teams can coach — but rewriting and keyword-aligning resumes at scale is time-intensive.
+            This service reduces staff load while improving ATS compatibility and recruiter clarity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solution">
+      <h2>Our solution</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="cardTitle">ATS-compatible structure</div>
+          <p class="mini">
+            Single-column, parser-friendly formatting designed to improve ATS readability while remaining recruiter-friendly.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Role-aligned keyword alignment</div>
+          <p class="mini">
+            Alignment to a target job title and job description to improve relevance signals for ATS screening.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Recruiter clarity & impact</div>
+          <p class="mini">
+            Edits to improve clarity, structure, and phrasing so candidates are evaluated accurately by human reviewers.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Human-reviewed quality control</div>
+          <p class="mini">
+            Technology-enabled drafting and checks with human review for consistency, professionalism, and policy alignment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>How a pilot works</h2>
+      <ol>
+        <li><strong>Confirm scope:</strong> volume, turnaround SLA, and delivery method.</li>
+        <li><strong>Intake:</strong> students submit through a secure institutional intake link, or your team submits centrally.</li>
+        <li><strong>Optimization:</strong> resumes are optimized for ATS compatibility and recruiter clarity.</li>
+        <li><strong>Delivery:</strong> files returned by email to the student or program coordinator (your choice).</li>
+        <li><strong>Review:</strong> basic usage and SLA reporting available (aggregate, non-sensitive).</li>
+      </ol>
+      <p class="mini">
+        Typical pilot turnaround is 24–48 hours depending on volume. Formal SLAs are set during pilot setup.
+      </p>
+    </section>
+
+    <section class="section" id="models">
+      <h2>Delivery models</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="cardTitle">Centralized model</div>
+          <p class="mini">
+            Program staff coordinates submissions and distribution. Best when you want a single operational owner.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Direct submission model</div>
+          <p class="mini">
+            Students submit directly through an institutional intake link. Best for cohorts and distributed programs.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">White-label option</div>
+          <p class="mini">
+            Optional branding alignment under your institution for a seamless student experience.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Cohort / volume agreements</div>
+          <p class="mini">
+            Pilot, semester-based, annual, or volume-based engagements supported. Structure is tailored to your program.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="privacy">
+      <h2>Data handling & privacy</h2>
+      <div class="card">
+        <ul>
+          <li>No resale of applicant data</li>
+          <li>Access restricted to authorized personnel</li>
+          <li>Files stored only as long as operationally required</li>
+          <li>FERPA-aware workflows available upon request</li>
+          <li>Custom retention and deletion policies supported for institutional partners</li>
+        </ul>
+        <p class="mini" style="margin-top:10px">
+          If your organization requires specific language or documentation, request a proposal and we’ll align with your requirements.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="not">
+      <h2>What this is not</h2>
+      <div class="card">
+        <ul>
+          <li>We do not guarantee interviews or job offers.</li>
+          <li>We do not fabricate experience, credentials, or employment history.</li>
+          <li>We optimize for ATS compatibility and recruiter clarity so candidates can be properly evaluated.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Do we need to deploy software or integrate systems?</summary>
+        <p>No. This is a service-based offering. We provide a secure intake workflow and deliver completed files via your chosen delivery model.</p>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>How is quality controlled?</summary>
+        <p>We use technology-enabled drafting and checks with human review for consistency, professionalism, and ATS-safe structure.</p>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>Can you support cohorts or high-volume periods?</summary>
+        <p>Yes. Volume and turnaround SLAs are defined during pilot setup. We can structure pilots around cohorts, semesters, or rolling intake.</p>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>How do institutional payments work?</summary>
+        <p>Institutional engagements are typically invoiced (Net terms), with structure based on pilot/semester/annual or volume agreements.</p>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>What do you need from students or participants?</summary>
+        <p>At minimum: the current resume and a target job title plus job description text or link. Optional notes can be included for context.</p>
+      </details>
+    </section>
+
+    <section class="ctaBand">
+      <div class="ctaCard">
+        <div class="ctaTitle">Ready to run a pilot?</div>
+        <p class="ctaSub">
+          Submit a pilot request and we’ll respond within one business day with recommended scope, turnaround, and next steps.
+        </p>
+        <div class="ctaActions">
+          <a class="btn btnPrimary" href="https://docs.google.com/forms/d/e/1FAIpQLSfr9Ue1WO85x1WRton1erOyP4raQMPpHSuUKj8jlEfibeSmbQ/viewform?usp=dialog" target="_blank" rel="noopener">Request a Pilot</a>
+          <a class="btn btnGhost" href="mailto:support@lifinitylabs.com?subject=Request%20a%20Proposal%20%E2%80%94%20Lifinity%20Labs">Request a Proposal</a>
+        </div>
+        <p class="smallLink" style="margin-top:10px">
+          Prefer email? Contact <a href="mailto:support@lifinitylabs.com">support@lifinitylabs.com</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="footer">
+      <p class="footText">
+        Lifinity Labs is operated by Lifinity Technologies LLC. ATS Resume Fix is a Lifinity Labs program focused on ATS compatibility and recruiter clarity at scale.
+        <br>
+        Contact: <a href="mailto:support@lifinitylabs.com">support@lifinitylabs.com</a>
+      </p>
+    </section>
+
+  </div>
+
+</body>
+</html>
