@@ -1,0 +1,215 @@
+===== inquiry.html =====
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lifinity Labs | Institutional Inquiry</title>
+  <meta name="description" content="Request an institutional pilot conversation with Lifinity Labs." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/" aria-label="Lifinity Labs home">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-name">Lifinity Labs</div>
+          <div class="brand-sub">Institutional Career-Readiness Infrastructure</div>
+        </div>
+      </a>
+      <a class="btn btn-dark btn-nav" href="/">Back to Overview</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <div class="container">
+        <div class="hero-card hero-card-wide">
+          <div class="eyebrow">Institutional Inquiry</div>
+          <h1>Request an institutional pilot conversation.</h1>
+          <p class="hero-copy">
+            Share a few details about your institution, team, and interest area. This keeps the motion proposal-first and lets Lifinity Labs respond in a structured way.
+          </p>
+
+          <form
+            name="institutional-inquiry"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/inquiry-success.html"
+            class="inquiry-form"
+          >
+            <input type="hidden" name="form-name" value="institutional-inquiry" />
+            <input type="hidden" name="interest" id="interestField" value="general" />
+
+            <p class="hidden-field">
+              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>Organization name</span>
+                <input type="text" name="organization_name" required />
+              </label>
+
+              <label class="field">
+                <span>Your name</span>
+                <input type="text" name="contact_name" required />
+              </label>
+
+              <label class="field">
+                <span>Work email</span>
+                <input type="email" name="email" required />
+              </label>
+
+              <label class="field">
+                <span>Title / role</span>
+                <input type="text" name="title" required />
+              </label>
+
+              <label class="field">
+                <span>Organization type</span>
+                <select name="organization_type" required>
+                  <option value="">Select one</option>
+                  <option>Career services team</option>
+                  <option>Workforce development program</option>
+                  <option>Bootcamp / training provider</option>
+                  <option>Placement-led organization</option>
+                  <option>Education-to-employment partner</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Primary interest</span>
+                <select name="interest_display" id="interestDisplay" required>
+                  <option value="pilot">Institutional pilot</option>
+                  <option value="managed">Managed workflow</option>
+                  <option value="general">General conversation</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Approximate cohort or case volume</span>
+                <input type="text" name="volume" placeholder="Example: 50 students per quarter" />
+              </label>
+
+              <label class="field">
+                <span>Preferred timeline</span>
+                <select name="timeline">
+                  <option value="">Select one</option>
+                  <option>Immediately</option>
+                  <option>Within 30 days</option>
+                  <option>Within 60 days</option>
+                  <option>Exploring for later</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field field-full">
+              <span>Main challenge</span>
+              <textarea
+                name="main_challenge"
+                rows="5"
+                required
+                placeholder="Tell us what is creating friction right now: inconsistent materials, routing issues, readiness gaps, adoption risk, or something else."
+              ></textarea>
+            </label>
+
+            <label class="field field-full">
+              <span>Anything else we should know?</span>
+              <textarea
+                name="notes"
+                rows="4"
+                placeholder="Optional context about your environment, goals, or pilot expectations."
+              ></textarea>
+            </label>
+
+            <label class="checkbox">
+              <input type="checkbox" name="consent" required />
+              <span>I agree to be contacted about this institutional inquiry.</span>
+            </label>
+
+            <div class="hero-actions">
+              <button class="btn btn-dark" type="submit">Send Institutional Inquiry</button>
+              <a class="btn btn-light" href="/">Back to Overview</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
+===== inquiry-success.html =====
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lifinity Labs | Inquiry Received</title>
+  <meta name="description" content="Your institutional inquiry has been received." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/" aria-label="Lifinity Labs home">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-name">Lifinity Labs</div>
+          <div class="brand-sub">Institutional Career-Readiness Infrastructure</div>
+        </div>
+      </a>
+      <a class="btn btn-dark btn-nav" href="/">Back to Overview</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-compact">
+      <div class="container">
+        <div class="hero-card hero-card-wide">
+          <div class="eyebrow">Inquiry Received</div>
+          <h1>Thank you. Your institutional inquiry has been received.</h1>
+          <p class="hero-copy">
+            Lifinity Labs can now review your submission and follow up through the right next-step conversation.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="/">Return to Homepage</a>
+            <a class="btn btn-light" href="/engagements">Review Engagements</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+===== assets/script.js =====
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const interest = params.get('interest');
+  const hidden = document.getElementById('interestField');
+  const display = document.getElementById('interestDisplay');
+  const allowed = ['pilot', 'managed', 'general'];
+  const value = allowed.includes(interest) ? interest : 'general';
+
+  if (hidden) hidden.value = value;
+  if (display) display.value = value;
+
+  if (display && hidden) {
+    display.addEventListener('change', function() {
+      hidden.value = display.value;
+    });
+  }
+})();
+
+===== _redirects =====
+/ /index.html 200
+/engagements /engagements.html 200
+/inquiry /inquiry.html 200
+/inquiry-success /inquiry-success.html 200
