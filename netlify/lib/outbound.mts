@@ -1,5 +1,5 @@
 import { getDeployStore, getStore } from "@netlify/blobs";
-import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
 declare const Netlify: {
   env: {
@@ -13,6 +13,16 @@ export const STORE_NAME = "veritas-outbound-v1";
 export const DEFAULT_LIFETIME_DAYS = 90;
 export const MINIMUM_LIFETIME_DAYS = 60;
 export const TOKEN_PATTERN = /^[A-Za-z0-9_-]{32,128}$/;
+export const RESEND_EVENT_TYPES = new Set([
+  "email.sent",
+  "email.delivered",
+  "email.bounced",
+  "email.complained",
+  "email.failed",
+  "email.suppressed",
+  "suppression.added",
+  "suppression.removed",
+]);
 
 export type TokenRecord = {
   schema_version: "1.0";
@@ -47,6 +57,10 @@ export function receiptKey(token: string): string {
   return `unsubscribe/receipt/${sha256(token)}`;
 }
 
+export function resendEventKey(eventId: string): string {
+  return `resend/event/${sha256(eventId)}`;
+}
+
 export function normalizeEmail(value: string): string {
   return value.trim().toLowerCase();
 }
@@ -60,6 +74,10 @@ export function getInternalSecret(): string {
   return (Netlify.env.get("VERITAS_OUTBOUND_INTERNAL_TOKEN") ?? "").trim();
 }
 
+export function getResendWebhookSecret(): string {
+  return (Netlify.env.get("VERITAS_RESEND_WEBHOOK_SECRET") ?? "").trim();
+}
+
 export function bearerMatches(header: string | null, expected: string): boolean {
   if (!expected) return false;
   const actual = (header ?? "").replace(/^Bearer\s+/i, "").trim();
@@ -67,6 +85,51 @@ export function bearerMatches(header: string | null, expected: string): boolean 
   const left = createHash("sha256").update(actual).digest();
   const right = createHash("sha256").update(expected).digest();
   return timingSafeEqual(left, right);
+}
+
+function decodeWebhookSecret(secret: string): Buffer {
+  const value = secret.trim();
+  if (!value.startsWith("whsec_")) throw new Error("invalid webhook secret");
+  const encoded = value.slice(6);
+  const decoded = Buffer.from(encoded, "base64");
+  if (!decoded.length || decoded.toString("base64").replace(/=+$/, "") !== encoded.replace(/=+$/, "")) {
+    throw new Error("invalid webhook secret");
+  }
+  return decoded;
+}
+
+export function verifySvixSignature(
+  rawBody: string,
+  headers: Headers,
+  signingSecret: string,
+  nowSeconds = Math.floor(Date.now() / 1000),
+  toleranceSeconds = 300,
+): string {
+  const messageId = (headers.get("svix-id") ?? "").trim();
+  const timestampText = (headers.get("svix-timestamp") ?? "").trim();
+  const signatureHeader = (headers.get("svix-signature") ?? "").trim();
+  if (!messageId || !timestampText || !signatureHeader) {
+    throw new Error("missing svix signature headers");
+  }
+  const timestamp = Number(timestampText);
+  if (!Number.isInteger(timestamp)) throw new Error("invalid svix timestamp");
+  if (Math.abs(nowSeconds - timestamp) > toleranceSeconds) {
+    throw new Error("stale svix timestamp");
+  }
+
+  const signed = `${messageId}.${timestampText}.${rawBody}`;
+  const expected = createHmac("sha256", decodeWebhookSecret(signingSecret))
+    .update(signed, "utf8")
+    .digest();
+  const candidates = signatureHeader
+    .split(/\s+/)
+    .filter((value) => value.startsWith("v1,"))
+    .map((value) => Buffer.from(value.slice(3), "base64"));
+  const valid = candidates.some(
+    (candidate) => candidate.length === expected.length && timingSafeEqual(candidate, expected),
+  );
+  if (!valid) throw new Error("invalid svix signature");
+  return messageId;
 }
 
 export function getOutboundStore(req: Request) {
